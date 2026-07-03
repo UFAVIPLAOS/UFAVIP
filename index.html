@@ -5,591 +5,662 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UFAVIP</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <style>
-body{
+
+*{
 margin:0;
-background:#0f1117;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+background:#080b14;
 font-family:Arial,sans-serif;
-text-align:center;
-}
-
-.logo{
-width:220px;
-max-width:80%;
-margin:30px auto;
-display:block;
-
-.whatsapp{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-gap:12px;
-padding:16px 34px;
-margin:20px auto 30px;
-border:none;
-border-radius:60px;
-text-decoration:none;
-font-size:18px;
-font-weight:700;
 color:#fff;
-
-background:linear-gradient(135deg,#25D366,#1EBE5D,#128C7E);
-background-size:300% 300%;
-
-box-shadow:
-0 10px 25px rgba(37,211,102,.35),
-0 0 25px rgba(37,211,102,.25);
-
-transition:all .35s ease;
-
-animation:
-gradientMove 6s ease infinite,
-pulse 2s infinite;
+overflow-x:hidden;
 }
 
-.whatsapp:hover{
-transform:translateY(-4px) scale(1.05);
-box-shadow:
-0 18px 45px rgba(37,211,102,.55),
-0 0 35px rgba(37,211,102,.45);
-}
+/* Loading */
 
-.whatsapp:active{
-transform:scale(.97);
-}
-
-@keyframes gradientMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-@keyframes pulse{
-0%{
-box-shadow:
-0 0 0 0 rgba(37,211,102,.45),
-0 10px 25px rgba(37,211,102,.35);
-}
-70%{
-box-shadow:
-0 0 0 18px rgba(37,211,102,0),
-0 10px 25px rgba(37,211,102,.35);
-}
-100%{
-box-shadow:
-0 0 0 0 rgba(37,211,102,0),
-0 10px 25px rgba(37,211,102,.35);
-}
-}
-
-.footer{
-height:30px;
-}
-.marquee{
-width:95%;
-max-width:1000px;
-margin:10px auto 20px;
-overflow:hidden;
-background:#1a1d26;
-border:2px solid #25D366;
-border-radius:10px;
-padding:12px 0;
-box-shadow:0 0 15px rgba(37,211,102,.3);
-}
-
-.marquee span{
-display:inline-block;
-white-space:nowrap;
-color:#fff;
-font-size:18px;
-font-weight:bold;
-padding-left:100%;
-animation:marquee 15s linear infinite;
-}
-
-@keyframes marquee{
-0%{
-transform:translateX(0);
-}
-100%{
-transform:translateX(-100%);
-}
-}
-.tagline{
-    color:#ffffff;
-    font-size:20px;
-    font-weight:700;
-    margin-top:-10px;
-    margin-bottom:25px;
-    letter-spacing:1px;
-}
-
-.tagline small{
-    display:block;
-    color:#bdbdbd;
-    font-size:14px;
-    font-weight:400;
-    margin-top:8px;
-}
-    /* Banner Animation */
-.banner{
-width:95%;
-max-width:1000px;
-display:block;
-margin:15px auto;
-border-radius:15px;
-
-opacity:0;
-transform:translateY(40px);
-transition:all .8s ease;
-}
-
-.banner.show{
-opacity:1;
-transform:translateY(0);
-}
-    .floating-whatsapp{
+#loader{
 position:fixed;
-right:20px;
-bottom:20px;
-width:68px;
-height:68px;
-border-radius:50%;
-background:linear-gradient(135deg,#25D366,#128C7E);
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#080b14;
 display:flex;
 align-items:center;
 justify-content:center;
-text-decoration:none;
-font-size:32px;
-color:#fff;
-box-shadow:0 10px 30px rgba(37,211,102,.5);
-z-index:9999;
-animation:pulse 2s infinite;
-transition:.3s;
+z-index:99999;
+transition:.6s;
 }
 
-.floating-whatsapp:hover{
-transform:scale(1.1);
-box-shadow:0 15px 40px rgba(37,211,102,.7);
+.loader-circle{
+width:70px;
+height:70px;
+border:6px solid rgba(255,255,255,.15);
+border-top:6px solid #25D366;
+border-radius:50%;
+animation:spin 1s linear infinite;
 }
 
-    .info-box{
-width:95%;
-max-width:1000px;
-margin:35px auto;
-padding:25px;
-background:linear-gradient(135deg,#1b1f2a,#11151d);
-border:1px solid rgba(255,255,255,.08);
-border-radius:18px;
-box-shadow:0 10px 30px rgba(0,0,0,.35);
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+/* Progress */
+
+.progress-bar{
+position:fixed;
+top:0;
+left:0;
+height:5px;
+width:0%;
+background:linear-gradient(90deg,#00c6ff,#7b2ff7,#25D366);
+z-index:99998;
+}
+
+/* Logo */
+
+.logo{
+display:block;
+margin:35px auto 20px;
+width:220px;
+max-width:80%;
+animation:logoGlow 3s infinite alternate;
+}
+
+@keyframes logoGlow{
+
+0%{
+filter:drop-shadow(0 0 10px rgba(0,198,255,.25));
+}
+
+100%{
+filter:drop-shadow(0 0 28px rgba(123,47,247,.7));
+}
+
+}
+
+/* Welcome */
+
+.tagline{
+font-size:28px;
+font-weight:700;
 text-align:center;
+margin-bottom:15px;
+background:linear-gradient(90deg,#00c6ff,#ffffff,#7b2ff7);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* Marquee */
+
+.marquee{
+
+width:94%;
+max-width:1100px;
+margin:auto;
+overflow:hidden;
+border-radius:14px;
+padding:14px 0;
+background:#101523;
+border:1px solid rgba(255,255,255,.08);
+box-shadow:0 10px 30px rgba(0,0,0,.4);
+
+}
+
+.marquee span{
+
+display:inline-block;
+white-space:nowrap;
+padding-left:100%;
+font-size:17px;
+font-weight:bold;
+animation:marquee 18s linear infinite;
+
+}
+
+@keyframes marquee{
+
+0%{
+transform:translateX(0);
+}
+
+100%{
+transform:translateX(-100%);
+}
+
+}
+
+/* Premium WhatsApp */
+
+.whatsapp{
+
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+
+width:fit-content;
+
+margin:28px auto;
+
+padding:17px 34px;
+
+border-radius:60px;
+
+text-decoration:none;
+
+font-size:19px;
+
+font-weight:bold;
+
+color:#fff;
+
+background:linear-gradient(135deg,#25D366,#1EBE5D,#00b894);
+
+background-size:300%;
+
+animation:
+
+gradientMove 6s infinite,
+
+pulse 2s infinite;
+
+box-shadow:
+
+0 15px 35px rgba(37,211,102,.35);
+
+transition:.35s;
+
+}
+
+.whatsapp:hover{
+
+transform:translateY(-5px) scale(1.05);
+
+}
+
+@keyframes gradientMove{
+
+0%{background-position:0% 50%;}
+
+50%{background-position:100% 50%;}
+
+100%{background-position:0% 50%;}
+
+}
+
+@keyframes pulse{
+
+0%{
+box-shadow:0 0 0 0 rgba(37,211,102,.45);
+}
+
+70%{
+box-shadow:0 0 0 18px rgba(37,211,102,0);
+}
+
+100%{
+box-shadow:0 0 0 0 rgba(37,211,102,0);
+}
+
+}
+
+/* Banner */
+
+.banner{
+
+display:block;
+
+width:94%;
+
+max-width:1100px;
+
+margin:22px auto;
+
+border-radius:18px;
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition:1s;
+
+box-shadow:0 15px 40px rgba(0,0,0,.4);
+
+}
+
+.banner.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+/* Info Box */
+
+.info-box{
+
+width:94%;
+
+max-width:1100px;
+
+margin:55px auto;
+
+padding:35px;
+
+border-radius:22px;
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,.08);
+
+box-shadow:0 20px 40px rgba(0,0,0,.4);
+
+text-align:center;
+
 }
 
 .info-box h2{
-margin:0;
-font-size:28px;
-color:#25D366;
+
+font-size:30px;
+
+margin-bottom:18px;
+
+color:#00c6ff;
+
 }
 
 .info-box p{
-margin-top:12px;
-font-size:16px;
+
+line-height:2;
+
+font-size:18px;
+
 color:#ddd;
-line-height:1.8;
+
 }
+
+/* Footer */
+
+.footer{
+
+margin-top:60px;
+
+padding:40px 20px;
+
+background:#0d111b;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+text-align:center;
+
+}
+
+.footer h3{
+
+font-size:28px;
+
+margin-bottom:20px;
+
+color:#00c6ff;
+
+}
+
+.footer a{
+
+display:block;
+
+color:#fff;
+
+text-decoration:none;
+
+margin:12px 0;
+
+font-size:18px;
+
+transition:.3s;
+
+}
+
+.footer a:hover{
+
+color:#25D366;
+
+}
+
+/* Floating WhatsApp */
+
+.floating{
+
+position:fixed;
+
+right:20px;
+
+bottom:20px;
+
+width:68px;
+
+height:68px;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#25D366,#128C7E);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:34px;
+
+text-decoration:none;
+
+color:#fff;
+
+box-shadow:0 10px 35px rgba(37,211,102,.5);
+
+animation:pulse 2s infinite;
+
+z-index:9999;
+
+}
+
+/* Back To Top */
+
+.topBtn{
+
+position:fixed;
+
+left:20px;
+
+bottom:20px;
+
+width:58px;
+
+height:58px;
+
+border:none;
+
+border-radius:50%;
+
+background:#7b2ff7;
+
+color:#fff;
+
+font-size:24px;
+
+cursor:pointer;
+
+display:none;
+
+box-shadow:0 10px 30px rgba(123,47,247,.4);
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.tagline{
+
+font-size:22px;
+
+}
+
+.whatsapp{
+
+width:90%;
+
+font-size:18px;
+
+}
+
+.info-box{
+
+padding:25px;
+
+}
+
+.info-box h2{
+
+font-size:24px;
+
+}
+
+.info-box p{
+
+font-size:16px;
+
+}
+
+}
+
 </style>
 
 </head>
+
 <body>
 
-<img src="logo.png.PNG" class="logo">
- <div class="tagline">
-   🎉ຍິນດີຕອນຮັບ🎊
+<div id="loader">
+
+<div class="loader-circle"></div>
+
 </div>
- <div class="marquee">
 
-    <span>
+<div class="progress-bar" id="progress"></div>
 
-         🎰🎲ເວັບຕົງຊັ້ນນຳທີ່ໝັ້ນຄົງ ປອດໄພ100% ລະບົບສະຖຽນ ບໍລິການວ່ອງໄວ ມີທີມງານດູເເລຕະຫຼອດ 24 ຊມ💸💸💸
-    </span>
+<img src="logo.png.PNG" class="logo">
 
-</div> 
+<div class="tagline">
+
+🎉 ຍິນດີຕອນຮັບ 🎉
+
+</div>
+
+<div class="marquee">
+
+<span>
+
+🎰 ລະບົບສະຖຽນ • ບໍລິການຕະຫຼອດ 24 ຊົ່ວໂມງ • ຕິດຕໍ່ WhatsApp ໄດ້ທັນທີ
+
+</span>
+
+</div>
+
 <a class="whatsapp"
+
 href="https://wa.me/8562097116626"
+
 target="_blank">
-📲 ຕິດຕໍ່ WhatsApp +8562097116626
+
+📲 ຕິດຕໍ່ WhatsApp
+
 </a>
+
 <img src="service.jpg.jpg" class="banner">
 
 <img src="package.jpg.jpg" class="banner">
 
 <img src="portfolio.jpg.PNG" class="banner">
-
-
 <div class="info-box">
-    <h2>⭐ ພ້ອມໃຫ້ບໍລິການ</h2>
-    <p>
-        📞 ຕອບແຊັດໄວ<br>
-        💬 ພ້ອມໃຫ້ຄຳແນະນຳ<br>
-        🕒 ເປີດໃຫ້ບໍລິການ 24/7
-    </p>
+
+<h2>⭐ ພ້ອມໃຫ້ບໍລິການ</h2>
+
+<p>
+
+📞 ຕອບແຊັດໄວພາຍໃນບໍ່ກີ່ນາທີ<br><br>
+
+💬 ມີທີມງານຄອຍໃຫ້ຄຳແນະນຳ<br><br>
+
+🕒 ເປີດໃຫ້ບໍລິການ 24 ຊົ່ວໂມງ
+
+</p>
+
+<a class="whatsapp"
+
+href="https://wa.me/8562097116626"
+
+target="_blank">
+
+📲 ຕິດຕໍ່ WhatsApp ທັນທີ
+
+</a>
+
 </div>
+
 <img src="review.jpg.PNG" class="banner">
 
-<a class="whatsapp"
-href="https://wa.me/8562097116626"
+<div class="footer">
+
+<h3>📞 Contact Us</h3>
+
+<a href="mailto:ufaviplaos@gmail.com">
+
+📧 Gmail :
+ufaviplaos@gmail.com
+
+</a>
+
+<a href="tel:+8562097116626">
+
+📱 Call :
++8562097116626
+
+</a>
+
+<a href="https://ufaviplaos.github.io/UFAVIP/"
+
 target="_blank">
-📲 ສະໝັກເລີຍ
+
+🌐 Website :
+https://ufaviplaos.github.io/UFAVIP/
+
 </a>
 
-<div class="footer"></div>
-<script>
-const banners = document.querySelectorAll(".banner");
+<br>
 
-const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            entry.target.classList.add("show");
-        }
-    });
-},{
-    threshold:0.2
-});
+<div style="color:#888;font-size:15px;">
 
-banners.forEach(banner=>{
-    observer.observe(banner);
-});
-</script>
-<a href="https://wa.me/8562097116626"
-   target="_blank"
-   class="floating-whatsapp"
-   title="WhatsApp">
-📱
-</a>
-<!DOCTYPE html>
-<html lang="lo">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UFAVIP</title>
+© 2026 UFAVIP
 
-<style>
-body{
-margin:0;
-background:#0f1117;
-font-family:Arial,sans-serif;
-text-align:center;
-}
-
-.logo{
-width:220px;
-max-width:80%;
-margin:30px auto;
-display:block;
-}
-
-.banner{
-width:95%;
-max-width:1000px;
-display:block;
-margin:15px auto;
-border-radius:15px;
-}
-
-.whatsapp{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-gap:12px;
-padding:16px 34px;
-margin:20px auto 30px;
-border:none;
-border-radius:60px;
-text-decoration:none;
-font-size:18px;
-font-weight:700;
-color:#fff;
-
-background:linear-gradient(135deg,#25D366,#1EBE5D,#128C7E);
-background-size:300% 300%;
-
-box-shadow:
-0 10px 25px rgba(37,211,102,.35),
-0 0 25px rgba(37,211,102,.25);
-
-transition:all .35s ease;
-
-animation:
-gradientMove 6s ease infinite,
-pulse 2s infinite;
-}
-
-.whatsapp:hover{
-transform:translateY(-4px) scale(1.05);
-box-shadow:
-0 18px 45px rgba(37,211,102,.55),
-0 0 35px rgba(37,211,102,.45);
-}
-
-.whatsapp:active{
-transform:scale(.97);
-}
-
-@keyframes gradientMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-@keyframes pulse{
-0%{
-box-shadow:
-0 0 0 0 rgba(37,211,102,.45),
-0 10px 25px rgba(37,211,102,.35);
-}
-70%{
-box-shadow:
-0 0 0 18px rgba(37,211,102,0),
-0 10px 25px rgba(37,211,102,.35);
-}
-100%{
-box-shadow:
-0 0 0 0 rgba(37,211,102,0),
-0 10px 25px rgba(37,211,102,.35);
-}
-}
-
-.footer{
-height:30px;
-}
-.marquee{
-width:95%;
-max-width:1000px;
-margin:10px auto 20px;
-overflow:hidden;
-background:#1a1d26;
-border:2px solid #25D366;
-border-radius:10px;
-padding:12px 0;
-box-shadow:0 0 15px rgba(37,211,102,.3);
-}
-
-.marquee span{
-display:inline-block;
-white-space:nowrap;
-color:#fff;
-font-size:18px;
-font-weight:bold;
-padding-left:100%;
-animation:marquee 15s linear infinite;
-}
-
-@keyframes marquee{
-0%{
-transform:translateX(0);
-}
-100%{
-transform:translateX(-100%);
-}
-}
-.tagline{
-    color:#ffffff;
-    font-size:20px;
-    font-weight:700;
-    margin-top:-10px;
-    margin-bottom:25px;
-    letter-spacing:1px;
-}
-
-.tagline small{
-    display:block;
-    color:#bdbdbd;
-    font-size:14px;
-    font-weight:400;
-    margin-top:8px;
-}
-    /* Banner Animation */
-.banner{
-width:95%;
-max-width:1000px;
-display:block;
-margin:15px auto;
-border-radius:15px;
-
-opacity:0;
-transform:translateY(40px);
-transition:all .8s ease;
-}
-
-.banner.show{
-opacity:1;
-transform:translateY(0);
-}
-    .floating-whatsapp{
-position:fixed;
-right:20px;
-bottom:20px;
-width:68px;
-height:68px;
-border-radius:50%;
-background:linear-gradient(135deg,#25D366,#128C7E);
-display:flex;
-align-items:center;
-justify-content:center;
-text-decoration:none;
-font-size:32px;
-color:#fff;
-box-shadow:0 10px 30px rgba(37,211,102,.5);
-z-index:9999;
-animation:pulse 2s infinite;
-transition:.3s;
-}
-
-.floating-whatsapp:hover{
-transform:scale(1.1);
-box-shadow:0 15px 40px rgba(37,211,102,.7);
-}
-
-@keyframes pulse{
-0%{
-transform:scale(1);
-}
-50%{
-transform:scale(1.08);
-}
-100%{
-transform:scale(1);
-}
-}
-    .stats{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:20px;
-margin:40px auto;
-width:95%;
-max-width:1000px;
-}
-
-.stat-item{
-flex:1;
-min-width:180px;
-background:#171b22;
-padding:25px;
-border-radius:18px;
-border:1px solid rgba(255,255,255,.08);
-box-shadow:0 10px 25px rgba(0,0,0,.35);
-transition:.3s;
-}
-
-.stat-item:hover{
-transform:translateY(-5px);
-box-shadow:0 15px 35px rgba(0,0,0,.5);
-}
-
-.stat-item h2{
-margin:0;
-font-size:32px;
-color:#25D366;
-}
-
-.stat-item p{
-margin-top:10px;
-font-size:16px;
-color:#ddd;
-}
-    .info-box{
-width:95%;
-max-width:1000px;
-margin:50px auto;
-padding:25px;
-background:linear-gradient(135deg,#1b1f2a,#11151d);
-border:1px solid rgba(255,255,255,.08);
-border-radius:18px;
-box-shadow:0 10px 30px rgba(0,0,0,.35);
-text-align:center;
-}
-
-.info-box h2{
-margin:0;
-font-size:28px;
-color:#25D366;
-}
-
-.info-box p{
-margin-top:12px;
-font-size:16px;
-color:#ddd;
-line-height:1.8;
-}
-</style>
-
-</head>
-<body>
-
-<img src="logo.png.PNG" class="logo">
- <div class="tagline">
-   🎉ຍິນດີຕອນຮັບ🎊
 </div>
- <div class="marquee">
 
-    <span>
-
-         🎰🎲ເວັບຕົງຊັ້ນນຳທີ່ໝັ້ນຄົງ ປອດໄພ100% ລະບົບສະຖຽນ ບໍລິການວ່ອງໄວ ມີທີມງານດູເເລຕະຫຼອດ 24 ຊມ💸💸💸
-    </span>
-
-</div> 
-<a class="whatsapp"
-href="https://wa.me/8562097116626"
-target="_blank">
-📲 ຕິດຕໍ່ WhatsApp +8562097116626
-</a>
-<img src="service.jpg.jpg" class="banner">
-
-<img src="package.jpg.jpg" class="banner">
-
-<img src="portfolio.jpg.PNG" class="banner">
-
-<div class="info-box">
-    <h2>⭐ ພ້ອມໃຫ້ບໍລິການ</h2>
-    <p>
-        📞 ຕອບແຊັດໄວ<br>
-        💬 ພ້ອມໃຫ້ຄຳແນະນຳ<br>
-        🕒 ເປີດໃຫ້ບໍລິການ 24/7
-    </p>
 </div>
-<img src="review.jpg.PNG" class="banner">
 
-<a class="whatsapp"
-href="https://wa.me/8562097116626"
-target="_blank">
-📲 ສະໝັກເລີຍ
-</a>
-
-<div class="footer"></div>
-<script>
-const banners = document.querySelectorAll(".banner");
-
-const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            entry.target.classList.add("show");
-        }
-    });
-},{
-    threshold:0.2
-});
-
-banners.forEach(banner=>{
-    observer.observe(banner);
-});
-</script>
 <a href="https://wa.me/8562097116626"
-   target="_blank"
-   class="floating-whatsapp"
-   title="WhatsApp">
+
+class="floating"
+
+target="_blank">
+
 📱
+
 </a>
-    
+
+<button
+
+class="topBtn"
+
+id="topBtn">
+
+↑
+
+</button>
+<script>
+
+// Loading Screen
+window.addEventListener("load",()=>{
+
+setTimeout(()=>{
+
+document.getElementById("loader").style.opacity="0";
+
+setTimeout(()=>{
+
+document.getElementById("loader").style.display="none";
+
+},600);
+
+},800);
+
+});
+
+// Banner Animation
+const banners=document.querySelectorAll(".banner");
+
+const observer=new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},{threshold:.15});
+
+banners.forEach(img=>observer.observe(img));
+
+// Progress Bar
+window.addEventListener("scroll",()=>{
+
+let winScroll=document.documentElement.scrollTop||document.body.scrollTop;
+
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+
+let progress=(winScroll/height)*100;
+
+document.getElementById("progress").style.width=progress+"%";
+
+});
+
+// Back To Top
+const topBtn=document.getElementById("topBtn");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>350){
+
+topBtn.style.display="block";
+
+}else{
+
+topBtn.style.display="none";
+
+}
+
+});
+
+topBtn.onclick=function(){
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+</script>
+
 </body>
+
 </html>
