@@ -140,6 +140,23 @@ transform:translateX(-100%);
     font-weight:400;
     margin-top:8px;
 }
+    /* Banner Animation */
+.banner{
+width:95%;
+max-width:1000px;
+display:block;
+margin:15px auto;
+border-radius:15px;
+
+opacity:0;
+transform:translateY(40px);
+transition:all .8s ease;
+}
+
+.banner.show{
+opacity:1;
+transform:translateY(0);
+}
 </style>
 
 </head>
@@ -191,6 +208,22 @@ target="_blank">
 </a>
 
 <div class="footer"></div>
+<script>
+const banners = document.querySelectorAll(".banner");
 
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+},{
+    threshold:0.2
+});
+
+banners.forEach(banner=>{
+    observer.observe(banner);
+});
+</script>
 </body>
 </html>
