@@ -8,6 +8,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>UFAVIP</title>
+  <link rel="icon" type="image/png" href="logo.png.PNG">
+
+<meta name="description" content="UFAVIP ເວັບບໍລິການອອນລາຍ ປອດໄພ 100% ບໍລິການ 24 ຊົ່ວໂມງ">
+
+<meta name="keywords" content="UFAVIP, UFABET, Casino, Slot, Sports">
+
+<meta property="og:title" content="UFAVIP">
+
+<meta property="og:description" content="ບໍລິການວ່ອງໄວ ປອດໄພ 100%">
+
+<meta property="og:image" content="logo.png.PNG">
+
+<meta property="og:type" content="website">
 
 <style>
 
@@ -111,13 +124,27 @@ z-index:9999;
 
 display:block;
 
-width:260px;
+width:320px;
 
-max-width:85%;
+max-width:88%;
 
-margin:35px auto 20px;
+margin:35px auto 25px;
 
 animation:logoGlow 3s infinite alternate;
+
+transition:.4s;
+
+filter:drop-shadow(0 0 15px rgba(255,215,0,.5));
+
+}
+
+.logo:hover{
+
+transform:scale(1.05);
+
+filter:
+drop-shadow(0 0 20px #FFD700)
+drop-shadow(0 0 35px #7b2ff7);
 
 }
 
@@ -216,32 +243,31 @@ transform:translateX(-100%);
 .whatsapp{
 
 display:flex;
-
 justify-content:center;
-
 align-items:center;
+gap:12px;
 
-gap:10px;
+width:90%;
+max-width:520px;
 
-width:max-content;
+margin:30px auto;
 
-margin:28px auto;
+padding:20px;
 
-padding:18px 38px;
-
-border-radius:60px;
+border-radius:70px;
 
 text-decoration:none;
 
-color:#fff;
-
-font-size:19px;
-
+font-size:20px;
 font-weight:bold;
 
-background:linear-gradient(135deg,#25D366,#00b894);
+color:#fff;
 
-box-shadow:0 15px 40px rgba(37,211,102,.4);
+background:linear-gradient(135deg,#25D366,#18b95a);
+
+box-shadow:
+0 0 20px rgba(37,211,102,.45),
+0 12px 40px rgba(37,211,102,.35);
 
 transition:.35s;
 
@@ -287,17 +313,33 @@ width:94%;
 
 max-width:1100px;
 
-margin:22px auto;
+margin:28px auto;
 
-border-radius:20px;
+border-radius:22px;
 
-box-shadow:0 15px 40px rgba(0,0,0,.45);
+overflow:hidden;
+
+border:2px solid rgba(255,255,255,.08);
+
+box-shadow:
+0 15px 45px rgba(0,0,0,.45),
+0 0 20px rgba(123,47,247,.20);
 
 opacity:0;
 
 transform:translateY(50px);
 
-transition:1s;
+transition:all .8s ease;
+
+}
+
+.banner:hover{
+
+transform:translateY(-8px) scale(1.02);
+
+box-shadow:
+0 25px 60px rgba(0,0,0,.55),
+0 0 35px rgba(0,198,255,.30);
 
 }
 
@@ -498,26 +540,66 @@ font-size:18px;
 
 }
 
-.info-box{
+  .info-box{
 
-padding:25px;
+width:94%;
+max-width:900px;
+
+margin:60px auto;
+
+padding:40px 30px;
+
+border-radius:28px;
+
+background:linear-gradient(
+145deg,
+rgba(24,32,54,.92),
+rgba(11,16,30,.96)
+);
+
+border:1px solid rgba(0,198,255,.25);
+
+box-shadow:
+0 0 30px rgba(0,198,255,.12),
+0 20px 60px rgba(0,0,0,.55);
+
+text-align:center;
+
+transition:.4s;
+
+}
+
+.info-box:hover{
+
+transform:translateY(-6px);
+
+box-shadow:
+0 0 40px rgba(123,47,247,.25),
+0 25px 70px rgba(0,0,0,.6);
 
 }
 
 .info-box h2{
 
-font-size:24px;
+font-size:32px;
+
+margin-bottom:25px;
+
+color:#FFD700;
+
+text-shadow:0 0 12px rgba(255,215,0,.4);
 
 }
 
 .info-box p{
 
-font-size:16px;
+font-size:19px;
+
+line-height:2.2;
+
+color:#f5f5f5;
 
 }
-
-}
-
 </style>
 
 </head>
