@@ -157,6 +157,42 @@ transition:all .8s ease;
 opacity:1;
 transform:translateY(0);
 }
+    .floating-whatsapp{
+position:fixed;
+right:20px;
+bottom:20px;
+width:68px;
+height:68px;
+border-radius:50%;
+background:linear-gradient(135deg,#25D366,#128C7E);
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+font-size:32px;
+color:#fff;
+box-shadow:0 10px 30px rgba(37,211,102,.5);
+z-index:9999;
+animation:pulse 2s infinite;
+transition:.3s;
+}
+
+.floating-whatsapp:hover{
+transform:scale(1.1);
+box-shadow:0 15px 40px rgba(37,211,102,.7);
+}
+
+@keyframes pulse{
+0%{
+transform:scale(1);
+}
+50%{
+transform:scale(1.08);
+}
+100%{
+transform:scale(1);
+}
+}
 </style>
 
 </head>
@@ -225,5 +261,11 @@ banners.forEach(banner=>{
     observer.observe(banner);
 });
 </script>
+<a href="https://wa.me/8562097116626"
+   target="_blank"
+   class="floating-whatsapp"
+   title="WhatsApp">
+📱
+</a>
 </body>
 </html>
