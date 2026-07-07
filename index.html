@@ -524,6 +524,7 @@ letter-spacing:1px;
 
 }
 
+
 .floating{
 
 position:fixed;
@@ -532,23 +533,25 @@ right:22px;
 
 bottom:28px;
 
-width:74px;
-
-height:74px;
-
 display:flex;
-
-justify-content:center;
 
 align-items:center;
 
-border-radius:50%;
+gap:10px;
+
+padding:0 18px;
+
+height:64px;
+
+border-radius:50px;
 
 background:linear-gradient(135deg,#25D366,#00C853);
 
 color:#fff;
 
-font-size:36px;
+font-size:20px;
+
+font-weight:bold;
 
 text-decoration:none;
 
@@ -568,11 +571,79 @@ transition:.35s;
 
 .floating:hover{
 
+transform:scale(1.08);
+
+}
+
+.floating span{
+
+font-size:18px;
+
+letter-spacing:.5px;
+
+}
+.floating:hover{
+
 transform:scale(1.12) rotate(8deg);
 
 box-shadow:
 0 0 35px rgba(37,211,102,.65),
 0 20px 55px rgba(37,211,102,.55);
+
+}
+  .line-floating{
+
+position:fixed;
+
+right:22px;
+
+bottom:115px;
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:0 18px;
+
+height:64px;
+
+border-radius:50px;
+
+background:linear-gradient(135deg,#06C755,#00B900);
+
+color:#fff;
+
+font-size:20px;
+
+font-weight:bold;
+
+text-decoration:none;
+
+z-index:99999;
+
+box-shadow:
+0 0 0 8px rgba(6,199,85,.12),
+0 18px 45px rgba(6,199,85,.45);
+
+animation:pulse 2s infinite;
+
+transition:.35s;
+
+}
+
+.line-floating:hover{
+
+transform:scale(1.08);
+
+}
+
+.line-floating span{
+
+font-size:18px;
+
+letter-spacing:.5px;
 
 }
 /* Back To Top */
@@ -816,11 +887,15 @@ target="_blank">
 </p>
 
 </footer>
-
+<a href="https://line.me/ti/p/WWE3_VfQ8H"
+class="line-floating"
+target="_blank">
+💬 <span>LINE</span>
+</a>
 <a href="https://wa.me/8562097116626"
 class="floating"
 target="_blank">
-📱
+📱 <span>WhatsApp</span>
 </a>
 
 <button id="topBtn">
